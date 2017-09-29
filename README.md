@@ -1455,7 +1455,9 @@ class UserSettings
 
     private function verifyCredentials(): bool
     {
-        // ...
+        /**
+         * Here we have logic of authorization inlcuded in UserSettings classs.
+         */
     }
 }
 ```
@@ -1491,6 +1493,7 @@ class UserSettings
 
     public function changeSettings(array $settings): void
     {
+        // All auth logic is moved to another class. We use only interface of external class.
         if ($this->auth->verifyCredentials()) {
             // ...
         }
