@@ -1873,6 +1873,9 @@ it makes your code hard to refactor.
 **Bad:**
 
 ```php
+/**
+ * Class Employee below forces its descendants to take its interface (in the meaninig of list of methods)
+ */
 class Employee
 {
     public function work(): void
@@ -1893,6 +1896,9 @@ class Manager
 {
     private $employee;
 
+    /**
+     * This constructor depends on real class - not abstraction (like interface or abstract class)
+     */
     public function __construct(Employee $employee)
     {
         $this->employee = $employee;
@@ -1910,6 +1916,9 @@ class Manager
 ```php
 interface Employee
 {
+    /**
+     * Forcing list of methods goes by implementing interface forcing
+     */
     public function work(): void;
 }
 
@@ -1933,6 +1942,9 @@ class Manager
 {
     private $employee;
 
+    /** 
+     * Now: constructor depends on abstraction - interface in this example.
+     */
     public function __construct(Employee $employee)
     {
         $this->employee = $employee;
